@@ -1,0 +1,192 @@
+.home {
+  font-family: "Segoe UI";
+  background: #f5f7fb;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg,#6a11cb,#b44cff);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* INFO */
+.info {
+  padding: 20px;
+}
+
+/* FILTER */
+.filters {
+  padding: 10px 20px;
+}
+
+.filters button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+.filters .active {
+  background: #6a11cb;
+  color: white;
+}
+
+/* LIST */
+.list {
+  padding: 20px;
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+
+  padding: 18px 20px;
+  margin-bottom: 12px;
+
+  border-radius: 14px;
+  border-left: 5px solid #6a11cb;
+
+  transition: all 0.25s ease;
+}
+
+.list-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.pdf-info {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pdf-info span {
+  font-size: 12px;
+  color: #777;
+}
+
+.actions button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+/* View */
+.view {
+  background: linear-gradient(135deg,#4f46e5,#6d28d9);
+  color: white;
+}
+
+.view:hover {
+  transform: scale(1.05);
+}
+
+/* Download */
+.download {
+  background: linear-gradient(135deg,#ec4899,#f43f5e);
+  color: white;
+}
+
+.download:hover {
+  transform: scale(1.05);
+}
+
+.list {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    padding: 35px 15px;
+    margin: 10px;
+    border-radius: 16px;
+  }
+
+  .hero h1 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  /* SECTION */
+  .info {
+    padding: 10px 15px;
+  }
+
+  /* FILTER */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 15px;
+  }
+
+  .filters button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* LIST */
+  .list {
+    padding: 10px;
+  }
+
+  /* 🔥 CARD STYLE (BETTER MOBILE LOOK) */
+  .list-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  /* TEXT */
+  .pdf-info {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .pdf-info span {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* 🔥 BUTTON FIX (IMPORTANT) */
+  .actions {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .actions button {
+    flex: 1; /* 🔥 Equal width buttons */
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  /* ICON FIX */
+  .pdf-info::before {
+    margin-right: 6px;
+  }
+}

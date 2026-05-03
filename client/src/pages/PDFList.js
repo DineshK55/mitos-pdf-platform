@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./PDFList.css";
 
 function PDFList() {
   const [pdfs, setPdfs] = useState([]);
@@ -6,36 +7,39 @@ function PDFList() {
   useEffect(() => {
     fetch("http://localhost:5000/api/pdf/all")
       .then(res => res.json())
-      .then(data => setPdfs(data))
-      .catch(err => console.log(err));
+      .then(data => setPdfs(data));
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="pdf-page">
+
       <h1>📚 PDF Library</h1>
 
-      {pdfs.map(pdf => (
-        <div
-          key={pdf.id}
-          style={{
-            border: "1px solid #ccc",
-            padding: "15px",
-            margin: "10px 0",
-            borderRadius: "8px"
-          }}
-        >
-          <h3>{pdf.title}</h3>
-          <p>{pdf.description}</p>
+      {pdfs.length === 0 ? (
+        <p className="empty">No PDFs available</p>
+      ) : (
+        pdfs.map(pdf => (
+          <div key={pdf.id} className="pdf-row">
 
-          <a href={pdf.fileUrl} target="_blank" rel="noreferrer">
-            <button>👁 View</button>
-          </a>
+            <div>
+              📄 {pdf.title}
+              <p>{pdf.description}</p>
+            </div>
 
-          <a href={pdf.fileUrl} download>
-            <button style={{ marginLeft: "10px" }}>⬇ Download</button>
-          </a>
-        </div>
-      ))}
+            <div className="actions">
+              <a href={pdf.fileUrl} target="_blank" rel="noreferrer">
+                <button className="view">View</button>
+              </a>
+
+              <a href={pdf.fileUrl} download>
+                <button className="download">Download</button>
+              </a>
+            </div>
+
+          </div>
+        ))
+      )}
+
     </div>
   );
 }

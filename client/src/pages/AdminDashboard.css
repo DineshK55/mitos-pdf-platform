@@ -1,0 +1,274 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f9;
+}
+
+/* Layout */
+.dashboard {
+  display: flex; /* 🔥 BACK TO FLEX (correct way) */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(180deg, #5b21b6, #7c3aed);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Menu */
+.menu-title {
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.12);
+}
+
+.menu-title:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.submenu {
+  margin-top: 8px;
+  padding-left: 8px;
+}
+
+.submenu-item {
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+}
+
+.submenu-item:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.submenu-item.active {
+  background: rgba(255,255,255,0.3);
+  font-weight: 500;
+}
+
+/* Main Content */
+.main {
+  margin-left: 230px;
+  padding: 25px;
+  background: #f8fafc;
+
+  width: calc(100% - 230px); /* 🔥 FULL WIDTH FIX */
+  min-height: 100vh;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user {
+  background: #e0e7ff;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+/* Upload Card */
+.upload-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.upload-card input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Upload Button */
+.upload-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #6d28d9, #9333ea);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  opacity: 0.9;
+}
+
+/* ========================= */
+/* TABLE UI */
+/* ========================= */
+
+.pdf-list-container {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  width: 100%;
+}
+
+.page-title {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pdf-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pdf-table thead {
+  background: linear-gradient(90deg, #6d28d9, #9333ea);
+  color: white;
+}
+
+.pdf-table th,
+.pdf-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.pdf-table td {
+  border-bottom: 1px solid #eee;
+}
+
+.pdf-table tbody tr:hover {
+  background: #f5f3ff;
+}
+
+.pdf-name {
+  font-weight: 500;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.view-btn {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.view-btn:hover {
+  background: #4f46e5;
+  color: white;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+/* Success Message */
+.success-msg {
+  background: #dcfce7;
+  color: #166534;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-btn {
+  background: #e5e7eb;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirm-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-buttons button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #e5e7eb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filter-buttons button.active {
+  background: linear-gradient(90deg, #6d28d9, #9333ea);
+  color: white;
+}

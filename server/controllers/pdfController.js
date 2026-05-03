@@ -4,20 +4,24 @@ const { admin, bucket } = require("../firebase/firebaseConfig");
 exports.uploadPDF = async (req, res) => {
   try {
     const file = req.file;
-    const { title, description } = req.body;
+    const { title, subject } = req.body; // ✅ UPDATED
 
     if (!file) {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
+    if (!subject) {
+      return res.status(400).json({ message: "Subject is required" });
+    }
+
     const fileName = Date.now() + "_" + file.originalname;
     const fileUpload = bucket.file(fileName);
 
-  const stream = fileUpload.createWriteStream({
-  metadata: {
-    contentType: file.mimetype,
-  },
-});
+    const stream = fileUpload.createWriteStream({
+      metadata: {
+        contentType: file.mimetype,
+      },
+    });
 
     stream.on("error", (error) => {
       console.error(error);
@@ -30,16 +34,22 @@ exports.uploadPDF = async (req, res) => {
         expires: "03-01-2030",
       });
 
+      // ✅ SAVE TO FIRESTORE WITH SUBJECT
       const docRef = await admin.firestore().collection("pdfs").add({
         title,
-        description,
+        subject, // 🔥 IMPORTANT
         fileUrl: url,
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
 
       res.status(200).json({
         message: "PDF uploaded successfully",
-        data: { id: docRef.id, title, description, fileUrl: url },
+        data: {
+          id: docRef.id,
+          title,
+          subject, // 🔥 IMPORTANT
+          fileUrl: url,
+        },
       });
     });
 
@@ -50,6 +60,7 @@ exports.uploadPDF = async (req, res) => {
   }
 };
 
+
 // GET ALL
 exports.getAllPDFs = async (req, res) => {
   try {
@@ -57,7 +68,7 @@ exports.getAllPDFs = async (req, res) => {
 
     const pdfs = snapshot.docs.map(doc => ({
       id: doc.id,
-      ...doc.data(),
+      ...doc.data(), // ✅ will now include subject
     }));
 
     res.status(200).json(pdfs);
@@ -66,6 +77,7 @@ exports.getAllPDFs = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 // DELETE
 exports.deletePDF = async (req, res) => {
